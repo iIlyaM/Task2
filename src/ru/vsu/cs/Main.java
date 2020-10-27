@@ -57,8 +57,7 @@ public class Main {
     }
 
     private static Result searchSecondMatchWinner(int x2, int y2)
-    {
-	
+    {	
         int winnerOfMatchTwo = calculateTheDifference(x2, y2);
 
         if (winnerOfMatchTwo > 0)
@@ -74,8 +73,7 @@ public class Main {
     }
 
     private static Stage searchForStageWinner(int x1, int y1, int x2, int y2)
-    {
-	
+    {	
         int winnerOfFirstMatch = calculateTheDifference(x1, y1);
 
         int winnerOfSecondMatch = calculateTheDifference(x2, y2);
@@ -92,8 +90,7 @@ public class Main {
     }
 
     private static Stage searchForWinnerInDraw(int x2, int y1)
-    {
-    	
+    { 	
         int winnerStageInDraw = calculateTheDifference(x2, y1);
 
         if (winnerStageInDraw > 0) {
