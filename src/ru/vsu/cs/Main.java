@@ -93,7 +93,7 @@ public class Main {
 
     private static Stage searchForWinnerInDraw(int x2, int y1)
     {
-	
+    	
         int winnerStageInDraw = calculateTheDifference(x2, y1);
 
         if (winnerStageInDraw > 0) {
@@ -109,7 +109,6 @@ public class Main {
 
     private static void printMatchWinner(Result results)
     {
-	
 	    switch(results) {
             case TEAM_N_WINNER:
                 System.out.println("Team N won this match!");
@@ -126,8 +125,7 @@ public class Main {
     }
 
     private static void printResultOfGames(Stage totals)
-    {
-	
+    {	
 	    switch(totals) {
             case TEAM_N_STAGE_WINNER:
                 System.out.println("Team N won the stage!");
