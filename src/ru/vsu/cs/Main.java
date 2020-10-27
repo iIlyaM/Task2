@@ -9,27 +9,19 @@ public class Main {
     {
    
         int x1 = readGoals("Number of goals scored by Team N at home");
-
         int y1 = readGoals("Number of goals scored by Team M in a foreign field");
-
         int x2 = readGoals("Number of goals scored by Team N in a foreign field");
-
         int y2 = readGoals("Number of goals scored by Team M at home");
 
         Result firstMatchWinner = searchFirstMatchWinner(x1, y1);
-
         Result secondMatchWinner = searchSecondMatchWinner(x2, y2);
-
         Stage stageWinner = searchForStageWinner(x1, x2, y1, y2);
 
         Result[] results = Result.values();
-
         Stage[] totals = Stage.values();
 
         printMatchWinner(firstMatchWinner);
-
         printMatchWinner(secondMatchWinner);
-
         printResultOfGames(stageWinner);
     }
 
