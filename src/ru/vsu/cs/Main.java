@@ -21,6 +21,10 @@ public class Main {
 
         Stage stageWinner = searchForStageWinner(x1, x2, y1, y2);
 
+        Result[] results = Result.values();
+
+        Stage[] totals = Stage.values();
+
 
 
         printMatchWinner(firstMatchWinner);
@@ -110,11 +114,31 @@ public class Main {
 
     private static void printMatchWinner(Result results)
 	{
-        System.out.println("Results of match :  " + results);
+	    switch(results) {
+            case TEAM_N_WINNER:
+                System.out.println("Team N won this match!");
+                break;
+
+            case TEAM_M_WINNER:
+                System.out.println("Team M won this match!");
+                break;
+
+            case DRAW:
+                System.out.println("Draw!");
+                break;
+        }
     }
 
     private static void printResultOfGames(Stage totals)
 	{
-        System.out.println("Results of stage : " + totals);
+	    switch(totals) {
+            case TEAM_N_STAGE_WINNER:
+                System.out.println("Team N won the stage!");
+                break;
+
+            case TEAM_M_STAGE_WINNER:
+                System.out.println("Team M won the stage!");
+                break;
+        }
     }
 }
