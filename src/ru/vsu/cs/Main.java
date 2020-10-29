@@ -124,7 +124,8 @@ public class Main {
 
     private static void printMatchWinner(Result results)
     {
-	    switch(results) {
+	    switch(results) 
+	    {
             case TEAM_N_WINNER:
                 System.out.println("Team N won this match!");
                 break;
@@ -136,12 +137,14 @@ public class Main {
             case DRAW:
                 System.out.println("Draw!");
                 break;
-        }
+	    }
+	
     }
 
     private static void printResultOfGames(Stage totals)
     {
-	    switch(totals) {
+	    switch(totals) 
+	    {
             case TEAM_N_STAGE_WINNER:
                 System.out.println("Team N won the stage!");
                 break;
@@ -149,7 +152,7 @@ public class Main {
             case TEAM_M_STAGE_WINNER:
                 System.out.println("Team M won the stage!");
                 break;
-        }
+	    }
     }
 }
 
