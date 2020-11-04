@@ -38,9 +38,7 @@ public class Main {
     private static int readGoals(String name)
     {
         Scanner sc = new Scanner(System.in);
-
         System.out.printf("Enter the number of goals scored by %s: ", name);
-
         return sc.nextInt();
     }
 
