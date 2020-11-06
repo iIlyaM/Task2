@@ -7,142 +7,75 @@ public class Main {
 
     public static void main(String[] args)
     {
-        int x1 = readGoals("Team N at home");
+        String goals = readGoals();
+        String[] scores = goals.split(":");
 
-        int y1 = readGoals("Team M in a foreign field");
+        int n1 = Integer.parseInt(scores[0]);
+        int m1 = Integer.parseInt(scores[1]);
 
-        int x2 = readGoals("Team N in a foreign field");
+         goals = readGoals();
+         scores = goals.split(":");
 
-        int y2 = readGoals("Team M at home");
+        int n2 = Integer.parseInt(scores[0]);
+        int m2 = Integer.parseInt(scores[1]);
 
-        Result firstMatchWinner = searchFirstMatchWinner(x1, y1);
-
-        Result secondMatchWinner = searchSecondMatchWinner(x2, y2);
-
-        Stage stageWinner = searchForStageWinner(x1, x2, y1, y2);
-
-        Result[] results = Result.values();
-
-        Stage[] totals = Stage.values();
-
-
-
-        printMatchWinner(firstMatchWinner);
-
-        printMatchWinner(secondMatchWinner);
-
+        Stage stageWinner = searchForStageWinner(n1, m1, n2, m2);
 
         printResultOfGames(stageWinner);
     }
 
-    private static int readGoals(String name)
-    {
-        Scanner sc = new Scanner(System.in);
-        System.out.printf("Enter the number of goals scored by %s: ", name);
-        return sc.nextInt();
+    private static String readGoals()
+	{
+       Scanner scan = new Scanner(System.in);
+       System.out.println("Enter the results of game between Team N and M: ");
+       return scan.nextLine();
     }
 
-    private static int calculateTheDifference(int x, int y)
-    {
-        return x - y;
+    private static int calculateTheSumOfGoalsTeamN(int n1, int n2)
+	{
+        return n1 + n2;
     }
 
-    private static Result searchFirstMatchWinner(int x1, int y1)
+    private static int calculateTheSumOfGoalsTeamM(int m1, int m2)
     {
-        int winnerOfMatchOne = calculateTheDifference(x1, y1);
-
-        if (winnerOfMatchOne > 0)
-        {
-            return Result.TEAM_N_WINNER;
-        }
-        else if (winnerOfMatchOne < 0) {
-            return Result.TEAM_M_WINNER;
-        }
-        else
-        {
-            return Result.DRAW;
-        }
+        return m1 + m2;
     }
 
-    private static Result searchSecondMatchWinner(int x2, int y2)
-    {
-        int winnerOfMatchTwo = calculateTheDifference(x2, y2);
+    private static Stage searchForStageWinner(int n1, int m1, int n2, int m2)
+	{
+        int sumPointsOfN = calculateTheSumOfGoalsTeamN(n1, n2);
+        int sumPointsOfM = calculateTheSumOfGoalsTeamM(m1, m2);
 
-        if (winnerOfMatchTwo > 0)
-        {
-            return Result.TEAM_N_WINNER;
-        }
-        else if (winnerOfMatchTwo < 0)
-        {
-            return Result.TEAM_M_WINNER;
-        }
-        else
-        {
-            return Result.DRAW;
-        }
-    }
-
-    private static Stage searchForStageWinner(int x1, int y1, int x2, int y2)
-    {
-        int winnerOfFirstMatch = calculateTheDifference(x1, y1);
-
-        int winnerOfSecondMatch = calculateTheDifference(x2, y2);
-
-        if (winnerOfFirstMatch > 0 && winnerOfSecondMatch > 0)
+        if (sumPointsOfN > sumPointsOfM)
         {
             return Stage.TEAM_N_STAGE_WINNER;
         }
-        else if (winnerOfFirstMatch < 0 && winnerOfSecondMatch < 0)
+        else if (sumPointsOfN < sumPointsOfM)
         {
             return Stage.TEAM_M_STAGE_WINNER;
         }
         else
         {
-            return searchForWinnerInDraw(x2, y1);
+            return searchForWinnerInDraw(n2, m1);
         }
     }
 
-    private static Stage searchForWinnerInDraw(int x2, int y1)
+    private static Stage searchForWinnerInDraw(int n2, int m1)
     {
-        int winnerStageInDraw = calculateTheDifference(x2, y1);
-
-        if (winnerStageInDraw > 0)
+        if (n2 > m1)
         {
             return Stage.TEAM_N_STAGE_WINNER;
         }
-        else if (winnerStageInDraw < 0)
+        else
         {
             return Stage.TEAM_M_STAGE_WINNER;
         }
-        else
-        {
-            return null;
-        }
-    }
-
-    private static void printMatchWinner(Result results)
-    {
-	    switch(results) 
-	    {
-            case TEAM_N_WINNER:
-                System.out.println("Team N won this match!");
-                break;
-
-            case TEAM_M_WINNER:
-                System.out.println("Team M won this match!");
-                break;
-
-            case DRAW:
-                System.out.println("Draw!");
-                break;
-	    }
-	
     }
 
     private static void printResultOfGames(Stage totals)
-    {
-	    switch(totals) 
-	    {
+	{
+	    switch(totals)
+        {
             case TEAM_N_STAGE_WINNER:
                 System.out.println("Team N won the stage!");
                 break;
@@ -150,12 +83,6 @@ public class Main {
             case TEAM_M_STAGE_WINNER:
                 System.out.println("Team M won the stage!");
                 break;
-	    }
+        }
     }
 }
-
-
-
-
-
-
